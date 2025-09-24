@@ -1,241 +1,84 @@
-<!doctype html>
+<!doctype html><!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Viviya Event — IEEE Student Branch</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Viviya Event — IEEE Student Branch</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-<style>
-  :root{
-    --bg:#07080b;
-    --card:#0d0f12;
-    --muted:#9aa1a8;
-    --accent:#d4af37;
-    --accent-2:#a97b2f;
-    --danger:#c94a4a;
-    --paper: rgba(255,245,230,0.03);
-    --glass: rgba(255,255,255,0.02);
-    --maxw: 1100px;
-  }
-
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;font-family:Inter,system-ui,"Segoe UI",Roboto,Arial;}
-  body{
-    background-image: url("https://wallpapercave.com/wp/wp4956803.jpg" );
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    color: #e6e9ec;
-    line-height:1.45;
-  }
-
-  .container{ width:95%; max-width:var(--maxw); margin:0 auto; }
-
-  header.hero{
-    position:relative;
-    min-height:70vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    border-bottom: 1px solid rgba(255,255,255,0.03);
-  }
-  .hero::before{
-    content:"";
-    position:absolute;inset:0;
-    background-image: url("https://i.ibb.co/sv414bFK/IMG-20250922-150810.jpg");
-    background-size:cover;
-    background-position:center;
-    transform: scale(1.02);
-    z-index:0;
-  }
-  .hero::after{
-    content:"";
-    position:absolute;inset:0;
-    background: radial-gradient(60% 40% at 10% 20%, rgba(0,0,0,0.28), transparent 20%),
-                linear-gradient(180deg, rgba(0,0,0,0.24), rgba(0,0,0,0.6));
-    z-index:1;
-  }
-  .hero-inner{ position:relative; z-index:2; padding:48px 20px; width:100%; }
-
-  nav.topnav{
-    position:absolute; right:18px; top:18px; z-index:3;
-    display:flex; gap:10px;
-  }
-  nav.topnav a{
-    color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:8px; font-weight:600;
-    background: rgba(255,255,255,0.01);
-    border:1px solid rgba(255,255,255,0.02);
-  }
-  nav.topnav a:hover{ color:var(--accent); border-color:rgba(212,175,55,0.08); }
-
-  main{ padding:34px 0 80px 0; }
-  section.panel{
-    margin:28px 0;
-    background: linear-gradient(180deg, rgba(226, 7, 7, 0.01), rgba(0,0,0,0.03));
-    border-radius:10px;
-    border: 1px solid rgba(255,255,255,0.02);
-    padding:22px;
-  }
-  h2.section-title{
-    font-family:"Crimson Pro",serif;
-    color:var(--accent);
-    margin:0 0 10px 0;
-    font-size:24px;
-  }
-  p.lead{ color:var(--muted); margin:0 0 14px 0; }
-
-   .events-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 14px;
-    }
-
-    .event-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.04));
-      background-image: url("https://imgs.search.brave.com/qOVnb6xyCsjMsoqufqxPhYwEmIAxWpqLtTHLPdETmkg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTE1/MDQ3NzcwNS9waG90/by9kYXJrLWJsYWNr/LWFuZC1ibHVlLWdy/dW5neS13YWxsLWJh/Y2tncm91bmQtZm9y/LWRpc3BsYXktb3It/bW9udGFnZS1vZi1w/cm9kdWN0LmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz03SFZL/c1FnVjJxalFBUTZM/Nk96LUNpNVBjRm1p/QUhjSkd5Tjl0aG9m/OFVzPQ");
-      padding: 14px;
-      border-radius: 20px;
-      border: 1px solid rgba(212, 175, 55, 0.3); /* gold border */
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .event-card-minor {
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.04));
-      background-image: url("https://imgs.search.brave.com/qOVnb6xyCsjMsoqufqxPhYwEmIAxWpqLtTHLPdETmkg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTE1/MDQ3NzcwNS9waG90/by9kYXJrLWJsYWNr/LWFuZC1ibHVlLWdy/dW5neS13YWxsLWJh/Y2tncm91bmQtZm9y/LWRpc3BsYXktb3It/bW9udGFnZS1vZi1w/cm9kdWN0LmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz03SFZL/c1FnVjJxalFBUTZM/Nk96LUNpNVBjRm1p/QUhjSkd5Tjl0aG9m/OFVzPQ");
-      padding: 14px;
-      border-radius: 20px;
-      border: 1px solid rgba(212, 175, 55, 0.3); /* gold border */
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s;
-      margin: 0 auto;
-    }
-
-    .event-card:hover {
-      border-color: var(--accent);
-      background-image: url("https://img.freepik.com/premium-photo/dark-photo-dark-background-with-black-background_994023-510487.jpg");
-      transform: scale(1.02);
-      box-shadow: 0 0 14px rgba(212, 175, 55, 0.2);
-    }
-
-    .event-card-minor:hover {
-      border-color: var(--accent);
-      background-image: url("https://img.freepik.com/premium-photo/dark-photo-dark-background-with-black-background_994023-510487.jpg");
-      transform: scale(1.02);
-      box-shadow: 0 0 14px rgba(212, 175, 55, 0.2);
-    }
-  .event-card h3{ margin:0 0 6px 0; font-size:18px; color:#fff; }
-  .event-card p{ color:var(--muted); margin:0 0 8px 0; font-size:14px; }
-  .event-meta{ display:flex; gap:12px; color:var(--muted); font-size:13px; margin-top:10px; }
-
-   .btn {
-    background: linear-gradient(180deg, var(--accent), var(--accent-2));
-    color: #081018;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 8px 26px rgba(169,123,47,0.14);
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.25s ease, box-shadow 0.35s ease, background 0.4s ease;
-  }
-  .btn::after {
-    content: "";
-    position: absolute;
-    top: 0; left: -75%;
-    width: 50%; height: 100%;
-    background: linear-gradient(120deg, rgba(255,255,255,0.4) 0%, transparent 80%);
-    transform: skewX(-25deg);
-    transition: left 0.5s ease;
-  }
-  .btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 0 22px rgba(212,175,55,0.6);
-    background: linear-gradient(180deg, #ffe97f, var(--accent));
-  }
-  .btn:hover::after { left: 130%; }
-
-  footer{
-    margin-top:40px; padding:18px 0; text-align:center; color:var(--muted); font-size:13px;
-    border-top:1px solid rgba(255,255,255,0.02);
-  }
-</style>
+  <!-- Local stylesheet -->
+  <link rel="stylesheet" href="style08.css">
 </head>
 <body>
-<header class="hero" role="banner">
-  </div>
-</header>
-
-<!-- ========== MAIN ========== -->
-<main class="container" role="main">
-
-  <!-- ABOUT -->
-  <section id="about" class="panel" aria-labelledby="aboutTitle">
-    <h2 id="aboutTitle" class="section-title">About Vivinya</h2>
-    <p class="lead">Vivinya 2k25 is a vibrant mix of technical and non-technical events that encourage innovation, creativity, and teamwork. From website creation, coding swaps, circuit building, and simulation tools to treasure hunts, quizzes, and cultural performances, the fest offers something for everyone. It’s a platform to learn, compete, and celebrate in an exciting and engaging environment.</p>
-
-        <ul style="margin-top:12px;color:var(--muted);">
-          <li><strong>When:</strong> March 16-17, 2025</li>
-          <li><strong>Where:</strong> Vasireddy Venkatadri International Technological University</li>
-          <li><strong>Who:</strong> Students from all engineering & tech majors</li>
-        </ul>
+  <header class="hero" role="banner">
+    <div class="hero-inner container">
+      <!-- Hero content (kept minimal) -->
+      <div class="hero-content">
       </div>
+    </div>
+  </header>
 
-      <aside style="background:var(--paper);padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);">
+  <!-- ========== MAIN ========== -->
+  <main class="container" role="main">
+
+    <!-- ABOUT -->
+    <section id="about" class="panel" aria-labelledby="aboutTitle">
+      <h2 id="aboutTitle" class="section-title">About Vivinya</h2>
+      <p class="lead">Vivinya 2k25 is a vibrant mix of technical and non-technical events that encourage innovation, creativity, and teamwork. From website creation, coding swaps, circuit building, and simulation tools to treasure hunts, quizzes, and cultural performances, the fest offers something for everyone. It’s a platform to learn, compete, and celebrate in an exciting and engaging environment.</p>
+
+      <ul style="margin-top:12px;color:var(--muted);">
+        <li><strong>When:</strong> March 16-17, 2025</li>
+        <li><strong>Where:</strong> Vasireddy Venkatadri International Technological University</li>
+        <li><strong>Who:</strong> Students from all engineering & tech majors</li>
+      </ul>
+
+      <aside style="background:var(--paper);padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);margin-top:12px;">
         <div style="font-weight:700;color:var(--accent);margin-bottom:8px">IEEE Student Branch</div>
         <div class="muted">IEEE Student Branch VVITU is a student-driven community that promotes innovation, technical learning, and professional development at Vasireddy Venkatadri International Technological University. It organizes workshops, competitions, and networking events to help students gain hands-on experience, enhance skills beyond academics, and connect with the global IEEE community.</div>
-        </div>
       </aside>
-    </div>
-  </section>
+    </section>
 
-  <!-- MAJOR EVENTS -->
-  <section id="events" class="panel" aria-labelledby="eventsTitle">
-    <h2 id="eventsTitle" class="section-title">Events</h2>
-    <h1>Day - 1</h1>
-    <div class="events-grid" style="margin-top:12px;">
-      <!-- Event 1 -->
-      <article class="event-card" aria-labelledby="ev1">
-        <div class="label">Event 01</div>
-        <h3 id="ev1">Site storm</h3>
-        <img src ="https://i.ibb.co/fzs5zJwK/sitestrom.jpg" height="150px" width="75%">
-        <p>Website creation based on the given requirements.</p>
-        <div class="event-meta">
-          <div>📅 March 16, 2025</div>
-          <div>🏛 CSE Lab(N416,N417,N418)</div>
-        </div>
-        <div style="margin-top:10px"><button class="btn" onclick="window.open('https://forms.gle/VtLrJbs5shgui2fT6')">Register</button></div>
-      </article>
+    <!-- MAJOR EVENTS -->
+    <section id="events" class="panel" aria-labelledby="eventsTitle">
+      <h2 id="eventsTitle" class="section-title">Events</h2>
 
-      <!-- Event 2 -->
-      <article class="event-card">
-        <div class="label">Event 02</div>
-        <h3>Code Swap</h3>
-        <img src ="https://i.ibb.co/cX2gyhVL/CodeSwap.jpg" height="150px" width="75%">
-        <p>Solve a problem statement by swapping coders every 5 mins.</p>
-        <div class="event-meta">
-          <div>📅 March 16, 2025</div>
-          <div>💻 Google Code Labs, IT Labs(N504,N505,N516,N506,N507)</div>
-        </div>
-        <div style="margin-top:10px"><button class="btn" onclick="window.open('https://forms.gle/yvqxvVnWsGjhq6128')">Register</button></div>
-      </article>
+      <h3 class="day-title">Day - 1</h3>
+      <div class="events-grid" style="margin-top:12px;">
+        <!-- Event 1 -->
+        <article class="event-card" aria-labelledby="ev1">
+          <div class="label">Event 01</div>
+          <h3 id="ev1">Site storm</h3>
+          <img src ="https://i.ibb.co/fzs5zJwK/sitestrom.jpg" height="150" width="75%" alt="Site storm">
+          <p>Website creation based on the given requirements.</p>
+          <div class="event-meta">
+            <div>📅 March 16, 2025</div>
+            <div>🏛 CSE Lab(N416,N417,N418)</div>
           </div>
-        <!--Minar Events-->
-        <div class="events-grid" style="margin-top:12px;">
-      <!-- Day Minor events - workshop -->
+          <div style="margin-top:10px"><button class="btn" onclick="window.open('https://forms.gle/VtLrJbs5shgui2fT6')">Register</button></div>
+        </article>
+
+        <!-- Event 2 -->
+        <article class="event-card">
+          <div class="label">Event 02</div>
+          <h3>Code Swap</h3>
+          <img src ="https://i.ibb.co/cX2gyhVL/CodeSwap.jpg" height="150" width="75%" alt="Code Swap">
+          <p>Solve a problem statement by swapping coders every 5 mins.</p>
+          <div class="event-meta">
+            <div>📅 March 16, 2025</div>
+            <div>💻 Google Code Labs, IT Labs(N504,N505,N516,N506,N507)</div>
+          </div>
+          <div style="margin-top:10px"><button class="btn" onclick="window.open('https://forms.gle/yvqxvVnWsGjhq6128')">Register</button></div>
+        </article>
+      </div>
+
+      <!-- Minor events -->
+      <div class="events-grid" style="margin-top:12px;">
         <article class="event-card-minor">
           <div class="label">Event 03</div>
           <h3>Code Runners</h3>
-          <img src ="https://i.ibb.co/6c8mDjSv/1-Code-Runners-A-thrilling-race-against-time-where-participants-solve-a-se-20250924-092552-0000.jpg" height="200px" width="75%">
+          <img src ="https://i.ibb.co/6c8mDjSv/1-Code-Runners-A-thrilling-race-against-time-where-participants-solve-a-se-20250924-092552-0000.jpg" height="200" width="75%" alt="Code Runners">
           <p>Thrilling coding race testing logic, algorithms, speed, and problem-solving.</p>
           <div class="event-meta">
             <div>📅 March 16, 2025</div>
@@ -243,84 +86,79 @@
           </div>
           <div style="margin-top:10px"><button class="btn" onclick="window.open('https://forms.gle/MRbn6PDFmXwjfpTP8')">Register</button></div>
         </article>
-        </div>
-  </section>
-  <section id="events" class="panel" aria-labelledby="eventsTitle">
-        <h2 id="eventsTitle" class="section-title"></h2>
-    <h1>Day - 2</h1><hover>
-    <div class="events-grid" style="margin-top:12px;">
-      <!-- Event 3 - workshop -->
-      <article class="event-card">
-        <div class="label">Event 01</div>
-        <h3>Circuit Battle</h3>
-        <img src ="https://i.ibb.co/sdH17Ltw/Circuit-Battle.jpg" height="150px" width="75%">
-        <p>Connect the given circuits correctly.</p>
-        <div class="event-meta">
-          <div>📅 March 17, 2025</div>
-          <div>🔧 EEE - Labs(C-Block : 101,202,406)</div>
-        </div>
-        <div style="margin-top:10px"><button class="btn" onclick="window.open('https://forms.gle/ScBF4S9UjjwJSvEX9')">Register</button></div>
-      </article>
- <!-- Event 4 -->
-      <article class="event-card">
-        <div class="label">Event 02</div>
-        <h3>Graph it out</h3>
-        <img src ="https://i.ibb.co/YF3ng0r1/Graph-It-Out.jpg" height="150px" width="75%">
-        <p>Present a given topic through a chart.</p>
-        <div class="event-meta">
-          <div>📅 March 17, 2025</div>
-          <div>🛠 New Block Seminar Hall</div>
-        </div>
-        <div style="margin-top:10px"><button class="btn" onclick="window.open('https://forms.gle/edLcaqBL1n6EWcqG8')">Register</button></div>
-      </article>
-    </div>
-  </section>
-<!-- MINOR EVENTS -->
-  <section id="events" class="panel" aria-labelledby="eventsTitle">
-        <h2 id="eventsTitle" class="section-title"></h2>
-  <hover>
-    <div class="events-grid" style="margin-top:12px;">
-      <!-- Event 3 - workshop -->
-      <article class="event-card-minor">
-        <div class="label">Event 03</div>
-        <h3>CNS Simulation</h3>
-        <img src ="https://i.ibb.co/B2XSpZP2/Untitled-design-20250924-092154-0000.png" height="150px" width="75%">
-        <p>A practical challenge that dives into the world of networking and cybersecurity.</p>
-        <div class="event-meta">
-          <div>📅 March 17, 2025</div>
-          <div>💻 CSE - Labs( N416, N417, N418 )</div>
-        </div>
-        <div style="margin-top:10px"><button class="btn" onclick="window.open('https://forms.gle/h71vg4jMX9FtwXQk8')">Register</button></div>
-      </article>
-    </div>
-  </section>
-  <!-- CONTACT -->
-  <section id="contact" class="panel" aria-labelledby="contactTitle">
-    <h2 id="contactTitle" class="section-title">Contact Us</h2>
-    <p class="lead">Questions? Reach the organizing committee or visit the venue information below.</p>
-
-    <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px;">
-      <div>
-        <h3 style="margin:0 0 8px 0;color:var(--accent);font-family:'Crimson Pro',serif">Organizing Committee</h3>
-        <p class="muted" style="margin:0 0 12px 0">IEEE Student Branch — event coordinators and volunteers. <br></br> Email: <strong>vvitieeeofficial@gmail.com</strong></p>
-
-        <h2 style="margin-top:8px;color:#d4af37">Venue</h2>
-        <p class="muted">Vasireddy Venkatadri International Technological University<br></br>Uppalapadu Road, Nambur, DT, Pedhakakani Mandal, Guntur, Andhra Pradesh 522508</p>
-
-        <div style="margin-top:12px" >
- <iframe
-  src="https://www.google.com/maps?q=Vasireddy+Venkatadri+Institute+of+Technology,+Uppalapadu+Road,+Nambur,+Peda+Kakani+Mandal,+Guntur,+Andhra+Pradesh+522508&output=embed"
-  width="600"
-  height="300"
-  style="border:0;"
-  allowfullscreen=""
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-
-        </div>
       </div>
-  </section>
+
+      <h3 class="day-title" style="margin-top:18px;">Day - 2</h3>
+      <div class="events-grid" style="margin-top:12px;">
+        <article class="event-card">
+          <div class="label">Event 01</div>
+          <h3>Circuit Battle</h3>
+          <img src ="https://i.ibb.co/sdH17Ltw/Circuit-Battle.jpg" height="150" width="75%" alt="Circuit Battle">
+          <p>Connect the given circuits correctly.</p>
+          <div class="event-meta">
+            <div>📅 March 17, 2025</div>
+            <div>🔧 EEE - Labs(C-Block : 101,202,406)</div>
+          </div>
+          <div style="margin-top:10px"><button class="btn" onclick="window.open('https://forms.gle/ScBF4S9UjjwJSvEX9')">Register</button></div>
+        </article>
+
+        <article class="event-card">
+          <div class="label">Event 02</div>
+          <h3>Graph it out</h3>
+          <img src ="https://i.ibb.co/YF3ng0r1/Graph-It-Out.jpg" height="150" width="75%" alt="Graph it out">
+          <p>Present a given topic through a chart.</p>
+          <div class="event-meta">
+            <div>📅 March 17, 2025</div>
+            <div>🛠 New Block Seminar Hall</div>
+          </div>
+          <div style="margin-top:10px"><button class="btn" onclick="window.open('https://forms.gle/edLcaqBL1n6EWcqG8')">Register</button></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MINOR EVENTS (additional day 2 minor) -->
+    <section class="panel">
+      <div class="events-grid" style="margin-top:12px;">
+        <article class="event-card-minor">
+          <div class="label">Event 03</div>
+          <h3>CNS Simulation</h3>
+          <img src ="https://i.ibb.co/B2XSpZP2/Untitled-design-20250924-092154-0000.png" height="150" width="75%" alt="CNS Simulation">
+          <p>A practical challenge that dives into the world of networking and cybersecurity.</p>
+          <div class="event-meta">
+            <div>📅 March 17, 2025</div>
+            <div>💻 CSE - Labs( N416, N417, N418 )</div>
+          </div>
+          <div style="margin-top:10px"><button class="btn" onclick="window.open('https://forms.gle/h71vg4jMX9FtwXQk8')">Register</button></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="panel" aria-labelledby="contactTitle">
+      <h2 id="contactTitle" class="section-title">Contact Us</h2>
+      <p class="lead">Questions? Reach the organizing committee or visit the venue information below.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px;">
+        <div>
+          <h3 style="margin:0 0 8px 0;color:var(--accent);font-family:'Crimson Pro',serif">Organizing Committee</h3>
+          <p class="muted" style="margin:0 0 12px 0">IEEE Student Branch — event coordinators and volunteers. <br/> Email: <strong>vvitieeeofficial@gmail.com</strong></p>
+
+          <h2 style="margin-top:8px;color:#d4af37">Venue</h2>
+          <p class="muted">Vasireddy Venkatadri International Technological University<br/>Uppalapadu Road, Nambur, DT, Pedhakakani Mandal, Guntur, Andhra Pradesh 522508</p>
+
+          <div style="margin-top:12px">
+            <iframe
+              src="https://www.google.com/maps?q=Vasireddy+Venkatadri+Institute+of+Technology,+Uppalapadu+Road,+Nambur,+Peda+Kakani+Mandal,+Guntur,+Andhra+Pradesh+522508&output=embed"
+              width="100%"
+              height="350"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+    </section>
     <section id="contact" class="panel" aria-labelledby="contactTitle">
 <aside style="background:var(--paper);padding:14px;border-radius:8px;border: 8px solid rgba(212, 175, 55, 0.3);" class="panel" >
         <div style="font-weight:700;color:var(--accent);margin-bottom:8px">For Enquiry and Updates</div>
@@ -333,146 +171,19 @@
         </div>
       </aside>
     </div>
-  </section>
+    </section>
 
-</main>
+  </main>
 
-<!-- ========== FOOTER ========== -->
-<footer role="contentinfo" class="container">
-  <div>© IEEE Student Branch VVITU 2025 </div>
-</footer>
+  <!-- ========== FOOTER ========== -->
+  <footer role="contentinfo" class="container">
+    <div>© IEEE Student Branch VVITU 2025 </div>
+  </footer>
 
-<!-- toast -->
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <!-- toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-<script>
-/* ========= Client-side behavior =========
-   - Registration form validation & local storage demo
-   - Quick join function for event cards
-   - Simple toast for feedback
-*/
-
-(function(){
-  const form = document.getElementById('regForm');
-  const savedList = document.getElementById('savedList');
-  const savedCount = document.getElementById('savedCount');
-  const toast = document.getElementById('toast');
-
-  // load saved regs from localStorage
-  const STORAGE_KEY = 'viviya_registrations_v1';
-  function loadSaved(){ 
-    try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    } catch(e){ return [];}
-  }
-  function saveSaved(arr){
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
-    renderSavedList();
-  }
-
-  function renderSavedList(){
-    const arr = loadSaved();
-    savedCount.textContent = 'Saved: ' + arr.length;
-    if(arr.length === 0){
-      savedList.innerHTML = '<div class="muted">No saved registrations yet (local demo).</div>';
-      return;
-    }
-    savedList.innerHTML = arr.map((r,i)=> {
-      return '<div style="padding:8px;border-bottom:1px dashed rgba(255,255,255,0.02);margin-bottom:6px;">'
-        + '<div style="font-weight:700">'+escapeHTML(r.name || '(no name)') + '</div>'
-        + '<div class="muted" style="font-size:13px">'+escapeHTML(r.email||'') + ' • ' + escapeHTML(r.event||'') + '</div>'
-        + '<div style="font-size:12px;color:var(--muted)">'+escapeHTML(r.notes || '') + '</div>'
-        + '</div>';
-    }).join('');
-  }
-  renderSavedList();
-
-  // Form submit handler
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    const data = {
-      name: form.name.value.trim(),
-      email: form.email.value.trim(),
-      phone: form.phone.value.trim(),
-      event: form.event.value,
-      institution: form.institution.value.trim(),
-      notes: form.notes.value.trim(),
-      ts: Date.now()
-    };
-
-    // small validation
-    if(!data.name) { showToast('Please enter your name.', true); form.name.focus(); return; }
-    if(!data.email || !validateEmail(data.email)) { showToast('Please enter a valid email.', true); form.email.focus(); return; }
-
-    // here: normally we'd POST to a server. For demo, we save locally
-    const arr = loadSaved();
-    arr.unshift(data);
-    saveSaved(arr);
-
-    showToast('Registration saved (demo). Thank you!');
-    form.reset();
-  });
-
-  // Save-as-demo button (explicit)
-  window.saveAsDemo = function(){
-    // gather current fields and save
-    const quick = {
-      name: form.name.value.trim() || 'Guest',
-      email: form.email.value.trim() || 'guest@example.com',
-      phone: form.phone.value.trim(),
-      event: form.event.value,
-      institution: form.institution.value.trim(),
-      notes: form.notes.value.trim(),
-      ts: Date.now()
-    };
-    const arr = loadSaved();
-    arr.unshift(quick);
-    saveSaved(arr);
-    showToast('Saved to local demo storage.');
-  };
-
-  // Quick join from event card
-  window.signUpQuick = function(eventName){
-    // prefill and scroll
-    form.event.value = eventName;
-    form.name.focus();
-    document.getElementById('registration').scrollIntoView({behavior:'smooth'});
-    showToast('Prefilled registration for: ' + eventName);
-  };
-
-  function validateEmail(e){
-    // simple regex
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
-  }
-
-  // small toast utility
-  let toastTimer = null;
-  function showToast(msg, isError=false){
-    toast.style.display = 'block';
-    toast.style.background = isError ? 'linear-gradient(180deg, rgba(201,74,74,0.08), rgba(0,0,0,0.06))' : '';
-    toast.innerHTML = msg;
-    if(toastTimer) clearTimeout(toastTimer);
-    toastTimer = setTimeout(()=>{ toast.style.display='none'; }, 3000);
-  }
-
-  // small escape HTML
-  function escapeHTML(s){ return (s||'').replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
-
-  // keyboard shortcuts
-  window.addEventListener('keydown', function(e){
-    if(e.key === 'r' && (e.ctrlKey || e.metaKey)){
-      e.preventDefault();
-      // quick clear saved (dangerous) — only if user confirms
-      if(confirm('Clear local demo registrations?')) { localStorage.removeItem(STORAGE_KEY); renderSavedList(); showToast('Local registrations cleared.'); }
-    }
-  });
-
-  // expose for debugging
-  window._viviya = {
-    loadSaved, saveSaved, renderSavedList
-  };
-})();
-</script>
-
+  <!-- Local script -->
+  <script src="script.js"></script>
 </body>
 </html>
