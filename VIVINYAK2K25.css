@@ -36,7 +36,7 @@
   .hero::before{
     content:"";
     position:absolute;inset:0;
-    background-image: url("https://i.ibb.co/sv414bFK/IMG-20250922-150810.jpg");
+    background-image: url("https://i.ibb.co/TxRkSyB4/IMG-20250925-151442.jpg");
     background-size:cover;
     background-position:center;
     transform: scale(1.02);
