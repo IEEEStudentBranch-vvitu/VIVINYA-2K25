@@ -1,4 +1,4 @@
-  :root{
+:root{
     --bg:#07080b;
     --card:#0d0f12;
     --muted:#9aa1a8;
@@ -38,8 +38,6 @@
     position:absolute;inset:0;
     background-image: url("https://i.ibb.co/S4KtW6mf/2-K25-20251002-103110-0000.png");
     background-size:cover;
-    width: 95%;
-    margin: 0;
     background-position:center;
     transform: scale(1.02);
     z-index:0;
